@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تحويل الوحدات</title>
+  <style>
+    body { font-family: Arial; direction: rtl; text-align: center; }
+    input, select, button { padding: 8px; margin: 5px; }
+  </style>
+</head>
+<body>
+
+<h2>محول الطول</h2>
+
+<input type="number" id="value" placeholder="أدخل الرقم">
+
+<select id="from">
+  <option value="m">متر</option>
+  <option value="cm">سنتيمتر</option>
+  <option value="km">كيلومتر</option>
+</select>
+
+<select id="to">
+  <option value="m">متر</option>
+  <option value="cm">سنتيمتر</option>
+  <option value="km">كيلومتر</option>
+</select>
+
+<br>
+<button onclick="convert()">تحويل</button>
+
+<h3 id="result"></h3>
+
+<script>
+function convert() {
+  let value = parseFloat(document.getElementById("value").value);
+  let from = document.getElementById("from").value;
+  let to = document.getElementById("to").value;
+
+  let meters;
+  if (from === "m") meters = value;
+  if (from === "cm") meters = value / 100;
+  if (from === "km") meters = value * 1000;
+
+  let result;
+  if (to === "m") result = meters;
+  if (to === "cm") result = meters * 100;
+  if (to === "km") result = meters / 1000;
+
+  document.getElementById("result").innerText = "النتيجة: " + result;
+}
+</script><!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>محول الوحدات الذكي</title>
+
+  <meta name="description" id="metaDescription"
+        content="منصة ويب ذكية لتوفير أدوات تحويل وحدات دقيقة وموثوقة، مصممة لتبسيط الحسابات اليومية والدراسية.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body { font-family: Arial; text-align: center; direction: rtl; }
+    select, input, button { padding: 8px; margin: 6px; }
+  </style>
+</head>
+<body>
+
+<!-- اختيار اللغة -->
+<select id="language" onchange="changeLanguage()">
+  <option value="ar">العربية</option>
+  <option value="en">English</option>
+  <option value="fr">Français</option>
+  <option value="es">Español</option>
+</select>
+
+<h1 id="title">محول الوحدات الذكي</h1>
+<p id="description">
+منصة ويب ذكية لتوفير أدوات تحويل وحدات دقيقة وموثوقة.
+</p>
+
+<h3 id="converterTitle">محول الطول</h3>
+
+<input type="number" id="value" placeholder="أدخل الرقم">
+<select id="from">
+  <option value="m">m</option>
+  <option value="cm">cm</option>
+  <option value="km">km</option>
+</select>
+<select id="to">
+  <option value="m">m</option>
+  <option value="cm">cm</option>
+  <option value="km">km</option>
+</select>
+
+<br>
+<button onclick="convert()" id="convertBtn">تحويل</button>
+<h3 id="result"></h3>
+
+<script>
+const texts = {
+  ar: {
+    title: "محول الوحدات الذكي",
+    description: "منصة ويب ذكية لتوفير أدوات تحويل وحدات دقيقة وموثوقة، مصممة لتبسيط الحسابات اليومية والدراسية.",
+    converter: "محول الطول",
+    button: "تحويل",
+    placeholder: "أدخل الرقم",
+    meta: "منصة ويب ذكية لتحويل الوحدات بدقة عالية وتجربة سهلة وغير مملة."
+  },
+  en: {
+    title: "Smart Unit Converter",
+    description: "A smart web platform providing accurate unit conversion tools with a clean and simple experience.",
+    converter: "Length Converter",
+    button: "Convert",
+    placeholder: "Enter value",
+    meta: "Smart web platform for accurate unit conversion with a fast and user-friendly experience."
+  },
+  fr: {
+    title: "Convertisseur d’unités intelligent",
+    description: "Plateforme web intelligente offrant des outils précis de conversion d’unités.",
+    converter: "Convertisseur de longueur",
+    button: "Convertir",
+    placeholder: "Entrez la valeur",
+    meta: "Plateforme web intelligente pour la conversion précise des unités."
+  },
+  es: {
+    title: "Convertidor de unidades inteligente",
+    description: "Plataforma web inteligente para convertir unidades con precisión y facilidad.",
+    converter: "Convertidor de longitud",
+    button: "Convertir",
+    placeholder: "Ingrese el valor",
+    meta: "Plataforma web inteligente para la conversión precisa de unidades."
+  }
+};
+
+function changeLanguage() {
+  const lang = document.getElementById("language").value;
+  document.documentElement.lang = lang;
+  document.body.style.direction = (lang === "ar") ? "rtl" : "ltr";
+
+  document.getElementById("title").innerText = texts[lang].title;
+  document.getElementById("description").innerText = texts[lang].description;
+  document.getElementById("converterTitle").innerText = texts[lang].converter;
+  document.getElementById("convertBtn").innerText = texts[lang].button;
+  document.getElementById("value").placeholder = texts[lang].placeholder;
+  document.getElementById("metaDescription").content = texts[lang].meta;
+}
+
+function convert() {
+  let value = parseFloat(document.getElementById("value").value);
+  let from = document.getElementById("from").value;
+  let to = document.getElementById("to").value;
+
+  let meters;
+  if (from === "m") meters = value;
+  if (from === "cm") meters = value / 100;
+  if (from === "km") meters = value * 1000;
+
+  let result;
+  if (to === "m") result = meters;
+  if (to === "cm") result = meters * 100;
+  if (to === "km") result = meters / 1000;
+
+  document.getElementById("result").innerText = result;
+}
+</script>
+
+</body>
+</html>
+</body>
+</html>
